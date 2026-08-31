@@ -1,0 +1,26 @@
+{
+  "name": "skill-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "build:web": "vite build --config web/vite.config.ts",
+    "dev": "tsx src/gateway.ts",
+    "start": "tsx src/gateway.ts",
+    "electron": "pnpm build:web && electron .",
+    "dist:win": "powershell -ExecutionPolicy Bypass -File scripts/package-win.ps1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "electron": "^37.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vite": "^7.1.3"
+  }
+}
