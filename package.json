@@ -1,0 +1,11 @@
+{
+  "name": "skill-workbench-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "powershell -ExecutionPolicy Bypass -File workbench/scripts/start.ps1",
+    "web": "pnpm --dir workbench start",
+    "app": "pnpm --dir workbench electron",
+    "build": "pnpm --dir workbench build:web"
+  }
+}
