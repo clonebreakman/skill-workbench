@@ -1,0 +1,139 @@
+:root {
+  color-scheme: light;
+  --bg: #f3f0e8;
+  --ink: #1c2430;
+  --muted: #5c6775;
+  --line: #d5cfc3;
+  --panel: #fffcf6;
+  --accent: #0f6a5a;
+  --ok: #1b7f4a;
+  --bad: #b42318;
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffaf0, var(--panel));
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-right: 0.5rem;
+}
+
+.nav button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nav button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.status {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.3rem;
+}
+
+.dot.ok {
+  background: var(--ok);
+}
+
+.dot.bad {
+  background: var(--bad);
+}
+
+.main {
+  min-height: 0;
+}
+
+.main iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+.overview {
+  padding: 1.5rem;
+  max-width: 52rem;
+}
+
+.overview .card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.overview a {
+  color: var(--accent);
+}
+
+.ok-msg {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.overview button {
+  border: 1px solid var(--line);
+  background: var(--accent);
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.overview button.secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.overview button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
