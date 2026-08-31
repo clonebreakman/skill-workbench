@@ -1,0 +1,71 @@
+{
+  "name": "distill-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "app": "pnpm build:web && tsx src/main.ts",
+    "dev": "tsx src/main.ts",
+    "build:web": "vite build --config web/vite.config.ts",
+    "build:server": "node scripts/build-server.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "electron": "pnpm build:web && pnpm build:server && electron .",
+    "dist:win": "powershell -ExecutionPolicy Bypass -File scripts/package-win.ps1 -App distill",
+    "dist:win:builder": "pnpm build:web && pnpm build:server && electron-builder --win nsis --publish never"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "electron": "^37.2.0",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.25.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.8.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vite": "^7.1.3",
+    "vitest": "^3.0.5"
+  },
+  "build": {
+    "appId": "com.distillstudio.app",
+    "productName": "Distill Studio",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/main.cjs",
+      "package.json"
+    ],
+    "asar": true,
+    "npmRebuild": false,
+    "nodeGypRebuild": false,
+    "extraResources": [
+      {
+        "from": "dist/server.cjs",
+        "to": "server.cjs"
+      },
+      {
+        "from": "dist/web",
+        "to": "web"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
